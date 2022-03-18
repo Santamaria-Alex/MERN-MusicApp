@@ -17,10 +17,13 @@ const pool = mysql.createPool({
   database: "musicDB",
 });
 
-pool.getConnection((error, connection) => {
-  connection.query("SELECT * FROM songs", (error, result) => {
-    if (error) throw error;
-    console.log(result);
+app.get("/", (req, res) => {
+  pool.getConnection((error, connection) => {
+    connection.query("SELECT * FROM songs", (error, result) => {
+      if (error) throw error;
+      console.log(result);
+      res.send(result);
+    });
   });
 });
 
