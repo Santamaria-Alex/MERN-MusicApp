@@ -8,4 +8,20 @@ const port = 6000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//sql
+const pool = mysql.createPool({
+  connectionLimit: 10,
+  host: "localhost",
+  user: "root",
+  password: "password",
+  database: "musicDB",
+});
+
+pool.getConnection((error, connection) => {
+  connection.query("SELECT * FROM songs", (error, result) => {
+    if (error) throw error;
+    console.log(result);
+  });
+});
+
 app.listen(port, console.log(`Server running on port: ${port}`));
