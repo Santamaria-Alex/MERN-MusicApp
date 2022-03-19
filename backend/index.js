@@ -75,4 +75,19 @@ app.put("/", (req, res) => {
   });
 });
 
+//delete
+app.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  pool.getConnection((err, connection) => {
+    connection.query("DELETE FROM songs WHERE id = ?", [id], (err, rows) => {
+      if (err) throw err;
+
+      // console.log(rows.length);
+      res.send(`Song has been removed.`);
+    });
+  });
+});
+
 app.listen(port, console.log(`Server running on port: ${port}`));
