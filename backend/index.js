@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   pool.getConnection((error, connection) => {
     connection.query("SELECT * FROM songs", (error, result) => {
       if (error) throw error;
-      console.log(result);
+      // console.log(result);
       res.send(result);
     });
   });
@@ -36,7 +36,7 @@ app.get("/:id", (req, res) => {
       [req.params.id],
       (error, result) => {
         if (error) throw error;
-        console.log(result);
+        // console.log(result);
         res.send(result);
       }
     );
@@ -63,13 +63,13 @@ app.put("/", (req, res) => {
 
   pool.getConnection((err, connection) => {
     connection.query(
-      "UPDATE songs SET name=?, WHERE id=?",
+      "UPDATE songs SET name=?, artist=?, album=? WHERE id=?",
       [name, artist, album, id],
       (err, rows) => {
         if (err) throw err;
 
         // console.log(rows.length);
-        res.send(`song has been updated.`);
+        res.send(`${name} has been updated.`);
       }
     );
   });
