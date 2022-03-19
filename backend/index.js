@@ -5,6 +5,7 @@ const mysql = require("mysql");
 const app = express();
 const port = 6000;
 
+//bodyParser handles middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
