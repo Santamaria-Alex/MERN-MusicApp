@@ -9,13 +9,15 @@ import Home from "./pages/Home";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="/albums" element={<Albums />} />
-        <Route path="/artist" element={<Artist />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/songs" element={<Songs />} />
-      </Routes>
+      <div className="app">
+        <Routes>
+          <Route path="/" index element={<Home />} />
+          <Route path="/albums" element={<Albums />} />
+          <Route path="/artist" element={<Artist />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/songs" element={<Songs />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
